@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} - Gallerie {% endblock %}
+       
+{% block contenu %}
+
+    		
+
+							<!-- Photo Galleries -->
+								<div class="gallery">
+									<header class="special">
+										<h2 style="text-align: center;">Nos Tableaux</h2>
+									</header>
+									            <div id="Gallery" >
+<div class="gallery">
+			<ul class="list ">
+         {% for u in liste %}
+                                                                                  <div class="content">
+										<div class="media">
+                                                                                    <a href="images/{{u.photo}}"><img class="gallerietab" src="images/{{u.photo}}" alt="" width="415px" height="334px" title="{{u.description}}" /><p class="label">{{u.titre}}</p></a>
+                                                                                        
+										</div>
+                                                                                    </div>
+                                                                                {% endfor %} 
+			</ul>
+</div>
+			<div class="no-result">No Results</div>
+			<ul class="pagination" ></ul>
+		</div>    
+                                                                </div>
+                                                         
+                                                                                
+                         
+                                                                                             
+{% endblock %} 

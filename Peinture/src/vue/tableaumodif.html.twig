@@ -1,0 +1,86 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }}  {% endblock %}
+       
+{% block contenu %}
+          <!--/col-->
+{% if form.tableau is defined %} 
+    {% if form.tableau != null %}    
+<div class="col-md-8 offset-md-2">
+                    <span class="anchor" id="formUserEdit"></span>
+                    
+                  
+                    <hr class="my-5">
+                     <a class="btn btn-primary"  href="index.php?page=listetableau" role="button">Liste des tableaux </a> 
+                    <a class="btn btn-primary"  href="index.php?page=ajouttableau" role="button">Ajoutez un tableau </a> 
+      
+   
+                    <!-- form user info -->
+                    <div class="card card-outline-secondary">
+                        
+                        <div class="card-header">
+                            <h3 class="mb-0" style="text-align: center;">Modification du tableau :</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form"  action="index.php?page=tableaumodif" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" id="id" name="id" value="{{form.tableau.id}}"/> 
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Titre :</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="inputTitre" name="inputTitre" value="{{form.tableau.titre}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Description :</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="inputDescription" name="inputDescription" value="{{form.tableau.description}}">
+                                    </div>
+                                </div>
+                                    <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Photo actuel:</label>
+                                   <img src="../web/images/{{form.tableau.photo}}"  width="150px" height="70px">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Modifié photo :</label>
+                                    <div class="col-lg-9">
+                                         <input type="file" name="fichier" class="form-control" />
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                     
+                                         <center><input type="submit" class="btn btn-primary" name="btModif" id="btAjoutabl" value="Modifié"> </center>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form user info -->
+
+                </div>
+                                {% else %}  
+        {% if form.valide == true %}
+           {% if form is empty %} 
+                        {% elseif form.valide == true %} <div id="messagealert" class="alert alert-success" role="alert" style="text-align: center;">{{form.message}}</div>
+                         {% elseif form.invalide == false %} <div id="messagealert" class="alert alert-danger" role="alert" style="text-align: center;">{{form.message}}</div>{% endif%}
+            <h1 class="mb-0" style="text-align: center;"><a href="index.php?page=listetableau" class="violet">Retourner sur la liste des tableaux</a></h1>
+        {% else %}    
+            {% if form is empty %} 
+                        {% elseif form.valide == true %} <div id="messagealert" class="alert alert-success" role="alert" style="text-align: center;">{{form.message}}</div>
+                         {% elseif form.invalide == false %} <div id="messagealert" class="alert alert-danger" role="alert" style="text-align: center;">{{form.message}}</div>{% endif%}
+            <h1 class="mb-0" style="text-align: center;"><a href="index.php?page=listetableau" class="violet">Retourner sur la liste des tableaux</a></h1>
+        {% endif %} 
+    {% endif %} 
+{% else %} 
+     {% if form is empty %} 
+                        {% elseif form.valide == true %} <div id="messagealert" class="alert alert-success" role="alert" style="text-align: center;">{{form.message}}</div>
+                         {% elseif form.invalide == false %} <div id="messagealert" class="alert alert-danger" role="alert" style="text-align: center;">{{form.message}}</div>{% endif%}
+     <h1 class="mb-0" style="text-align: center;"><a href="index.php?page=listetableau" class="violet">Retourner sur la liste des tableaux</a></h1>
+       
+{% endif %}
+ {% endblock %} 
+
+{# empty Twig template #}
+{# empty Twig template #}

@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }}  {% endblock %}
+       
+{% block contenu %}
+          <!--/col-->
+              
+
+    <div class="col-md-8 offset-md-2">
+                    <span class="anchor" id="formUserEdit"></span>
+                    
+                  
+                    <hr class="my-5">
+    {% if form is empty %} 
+                        {% elseif form.valide == true %} <div id="messagealert" class="alert alert-success" role="alert" style="text-align: center;">{{form.message}}</div>
+                         {% elseif form.invalide == false %} <div id="messagealert" class="alert alert-danger" role="alert" style="text-align: center;">{{form.message}}</div>{% endif%}
+                          <a class="btn btn-primary"  href="index.php?page=ajoutmessagelo" role="button">Ajoutez un message </a> 
+                           <a class="btn btn-primary"  href="index.php?page=listemessage" role="button">Liste des messages </a> 
+    <div class="card-header">
+                            <h3 class="mb-0" style="text-align: center;">Liste des Messages  :</h3>
+                        </div>
+<table class="table" id="dataTable" width="100%" cellspacing="0">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Pseudo</th>
+      <th scope="col">Email</th>
+      <th scope="col">Note</th>
+      <th scope="col">Message</th>
+      <th scope="col">Date</th>
+      <th scope="col">Etat</th>
+      <th scope="col">Validation de l'état</th>
+      <th scope="col">Modifié</th>
+      <th scope="col">Supprimé</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+    {% for p in liste %}
+        
+        <tr><td>{{p.Pseudo}}</td><td>{{p.email}}</td><td>{{p.note}}/5</td><td>{{p.message}}</td><td>{{p.date|date('d/m/Y')}}</td><td>{{p.etat}}</td><td><div class="btn-group btn-group-lg"><a href="index.php?page=listeMav&idLO={{p.idLO}}&id=1"><span class="fas  fa-check" aria-hidden="true" style="color: green;font-size: 1.2em;"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="index.php?page=messagemodif&id={{p.idLO}}"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="index.php?page=listemessage&id={{p.id}}"><span class="fas fa-trash-alt " aria-hidden="true" ></span></a></div></td></tr> 
+   {% endfor %} 
+  </tbody>
+</table>
+</div>
+       
+ {% endblock %} 
+
+{# empty Twig template #}
+{# empty Twig template #}
